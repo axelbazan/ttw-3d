@@ -1,0 +1,210 @@
+/* ========================================
+   POSTER AGENDA - Estilos específicos
+   ======================================== */
+
+.poster--agenda {
+  width: 100%;
+  max-width: 520px;
+  padding: 1.5rem;
+}
+
+.poster__intro {
+  margin-bottom: 0.5rem;
+}
+
+.poster__intro .body-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Tabs */
+.poster__tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.poster__tab {
+  position: relative;
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: var(--color-chip-bg);
+  border: var(--border-width) solid var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.poster__tab:hover {
+  background: var(--color-ink);
+}
+
+.poster__tab:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+.poster__tab--active {
+  background: var(--color-ink);
+}
+
+.poster__tab--active .poster__tab-tag {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.poster__tab-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-white);
+  padding: 0.25rem 0.75rem;
+  border-radius: 2px;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* Panel */
+.poster__panel {
+  animation: panelFadeIn 0.3s ease-out;
+}
+
+@keyframes panelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.poster__day-header {
+  margin-bottom: 1rem;
+}
+
+.poster__day-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.65rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+}
+
+.poster__day-place {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.125rem 0.5rem;
+  border-radius: 2px;
+  font-size: 0.6rem;
+}
+
+.poster__day-track {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-blue);
+}
+
+.poster__day-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--color-ink);
+  margin-bottom: 0.75rem;
+  line-height: 0.95;
+}
+
+.poster__day-body {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.poster__day-venue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-ink-secondary);
+  margin-bottom: 1rem;
+}
+
+.poster__day-venue svg {
+  flex-shrink: 0;
+  color: var(--color-blue);
+}
+
+.poster__coming-soon {
+  text-align: center;
+  padding-top: 0.5rem;
+  opacity: 0.7;
+  font-size: 0.75rem !important;
+}
+
+/* Marquee */
+.poster__marquee {
+  overflow: hidden;
+  margin: 1rem -1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-ink);
+}
+
+.poster__marquee .marquee__item {
+  color: var(--color-white);
+}
+
+/* Social */
+.poster__social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.poster__social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.poster__social-links .link-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.poster__social-links svg {
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .poster--agenda {
+    padding: 1.25rem;
+    max-width: 100%;
+  }
+
+  .poster__tabs {
+    flex-direction: column;
+  }
+
+  .poster__tab {
+    padding: 0.6rem 1rem;
+  }
+
+  .poster__marquee {
+    margin: 1rem -1.25rem;
+    padding: 0.75rem 1.25rem;
+  }
+}

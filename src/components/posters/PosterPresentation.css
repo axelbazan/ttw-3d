@@ -1,0 +1,225 @@
+/* ========================================
+   POSTER PRESENTATION - Estilos específicos
+   ======================================== */
+
+.poster--presentation {
+  width: 100%;
+  max-width: 480px;
+  padding: 2rem;
+  position: relative;
+  overflow: visible;
+}
+
+/* Blob decorativo (forma orgánica del hero) */
+.poster__blob {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: var(--color-white);
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  opacity: 0.15;
+  pointer-events: none;
+  animation: blobFloat 8s ease-in-out infinite;
+}
+
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { transform: translate(10px, -10px) rotate(2deg); border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%; }
+  50% { transform: translate(-5px, 15px) rotate(-1deg); border-radius: 70% 30% 40% 60% / 70% 40% 60% 30%; }
+  75% { transform: translate(15px, 5px) rotate(3deg); border-radius: 30% 70% 60% 40% / 30% 60% 40% 70%; }
+}
+
+.poster__header {
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.poster__title {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  line-height: 0.9;
+  color: var(--color-ink);
+  margin-top: 0.5rem;
+}
+
+.poster__title-date {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--color-blue);
+  font-weight: 800;
+}
+
+.poster__tagline {
+  margin: 1rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.poster__tagline-text {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
+.poster__highlight {
+  color: var(--color-blue);
+  font-weight: 800;
+}
+
+.poster__venues {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.poster__venue {
+  padding: 1rem;
+  background: var(--color-chip-bg);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-hard-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.poster__venue:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hard);
+}
+
+.poster__venue .eyebrow {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--color-blue);
+}
+
+.poster__venue .body-text {
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Marquee */
+.poster__marquee {
+  margin: 1.5rem -2rem;
+  padding: 1rem 2rem;
+  background: var(--color-ink);
+  position: relative;
+  z-index: 1;
+}
+
+.poster__marquee .marquee__item {
+  color: var(--color-white);
+}
+
+/* Footer */
+.poster__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.poster__social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.poster__social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.poster__social-links .link-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.poster__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-white);
+  background: var(--color-blue);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-hard);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.poster__cta:hover {
+  background: var(--color-ink);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-hover);
+}
+
+.poster__cta:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+}
+
+.poster__cta svg {
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.poster__cta:hover svg {
+  transform: translateY(2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .poster--presentation {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  .poster__blob {
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+  }
+
+  .poster__venues {
+    grid-template-columns: 1fr;
+  }
+
+  .poster__marquee {
+    margin: 1rem -1.5rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .poster__social-links {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .poster--presentation {
+    padding: 1.25rem;
+  }
+
+  .poster__blob {
+    display: none;
+  }
+}

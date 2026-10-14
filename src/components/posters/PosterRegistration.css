@@ -1,0 +1,196 @@
+/* ========================================
+   POSTER REGISTRATION - Estilos específicos
+   Fondo azul eléctrico (#1000FF)
+   ======================================== */
+
+.poster--registration {
+  width: 100%;
+  max-width: 520px;
+  padding: 2rem;
+  background: var(--color-blue);
+  color: var(--color-white);
+  border-color: var(--color-white);
+  box-shadow: 6px 6px 0 0 var(--color-ink);
+}
+
+.poster--registration:hover {
+  box-shadow: 6px 6px 0 0 var(--color-white);
+  transform: translate(-2px, -2px);
+}
+
+.poster--registration .eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.poster--registration .display-font,
+.poster--registration .body-text,
+.poster--registration .body-text-small {
+  color: var(--color-white);
+}
+
+.poster--registration .poster-divider {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.poster__header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.poster__title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 0.95;
+  text-align: center;
+}
+
+.poster__body {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+  margin-bottom: 0.5rem;
+}
+
+.poster__note {
+  text-align: center;
+  opacity: 0.8;
+  font-size: 0.8rem !important;
+}
+
+/* Countdown wrapper */
+.poster__countdown-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.poster--registration .countdown__item {
+  background: transparent;
+  border-color: var(--color-white);
+  box-shadow: none;
+}
+
+.poster--registration .countdown__value,
+.poster--registration .countdown__label {
+  color: var(--color-white);
+}
+
+.poster--registration .countdown__value {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* Botones estado abierto */
+.poster__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.poster--registration .poster-btn--bone {
+  background: var(--color-bone);
+  color: var(--color-blue);
+  border-color: var(--color-white);
+}
+
+.poster--registration .poster-btn--bone:hover {
+  background: var(--color-white);
+  color: var(--color-blue);
+}
+
+.poster--registration .poster-btn--green {
+  background: var(--color-green);
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.poster--registration .poster-btn--green:hover {
+  background: var(--color-white);
+  color: var(--color-green);
+}
+
+/* Footer */
+.poster__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.poster__social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.poster__social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.poster__social-links .link-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+}
+
+.poster__social-links .link-text:hover {
+  opacity: 0.8;
+}
+
+.poster__footer-text {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .poster--registration {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  .poster__buttons {
+    gap: 0.5rem;
+  }
+
+  .poster--registration .poster-btn {
+    padding: 0.85rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .poster__social-links {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .poster--registration {
+    padding: 1.25rem;
+  }
+
+  .poster__countdown-wrapper .countdown {
+    gap: 0.5rem;
+  }
+
+  .poster__countdown-wrapper .countdown__item {
+    min-width: 55px;
+    padding: 0.5rem 0.35rem;
+  }
+
+  .poster__countdown-wrapper .countdown__value {
+    font-size: 1.25rem;
+  }
+}
