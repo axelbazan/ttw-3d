@@ -13,20 +13,21 @@ export interface CameraKeyframe {
 }
 
 export interface ScrollProgress {
-  t: number; // 0-1 global progress
+  t: number;
   section: ScrollSectionId;
-  sectionProgress: number; // 0-1 within current section
+  sectionProgress: number;
+  direction?: 'up' | 'down';
 }
 
 export interface PosterProps {
   isActive: boolean;
-  progress: number; // 0-1 within this poster's section
+  progress: number;
   onClick?: () => void;
 }
 
 export interface RockState {
   isFalling: boolean;
-  fallProgress: number; // 0-1
+  fallProgress: number;
   rotation: Vector3Like;
   position: Vector3Like;
 }
@@ -82,3 +83,6 @@ export interface NavItem {
   id: ScrollSectionId;
   label: string;
 }
+
+// Re-export types from content/event
+export type { ScrollSectionId } from '../content/event';

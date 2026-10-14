@@ -1,0 +1,1 @@
+export { Canvas3D, Canvas3DWrapper } from './Canvas3D';

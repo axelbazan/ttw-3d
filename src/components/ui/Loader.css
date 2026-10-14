@@ -1,0 +1,109 @@
+/* ========================================
+   LOADER - Estilos
+   ======================================== */
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bone);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.loader__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.loader__logo-mark {
+  width: 64px;
+  height: 64px;
+  background: var(--color-blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: var(--tracking-tight);
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 0, 255, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(16, 0, 255, 0); }
+}
+
+.loader__logo-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-ink);
+}
+
+.loader__progress {
+  width: 280px;
+  height: 4px;
+  background: var(--color-chip-bg);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-green));
+  border-radius: 2px;
+  transition: width 0.3s ease-out;
+  width: 0%;
+}
+
+.loader__text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-ink-secondary);
+}
+
+.loader__text span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-blue);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .loader__logo-mark {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+
+  .loader__logo-text {
+    font-size: 1.25rem;
+  }
+
+  .loader__progress {
+    width: 200px;
+  }
+}

@@ -1,0 +1,232 @@
+/* ========================================
+   POSTER FINALE - Estilos específicos
+   Fondo azul eléctrico, estilo cierre épico
+   ======================================== */
+
+.poster--finale {
+  width: 100%;
+  max-width: 520px;
+  padding: 3rem 2rem;
+  background: var(--color-blue);
+  color: var(--color-white);
+  border-color: var(--color-white);
+  box-shadow: 6px 6px 0 0 var(--color-ink);
+  text-align: center;
+  position: relative;
+  overflow: visible;
+}
+
+.poster--finale:hover {
+  box-shadow: 6px 6px 0 0 var(--color-white);
+  transform: translate(-2px, -2px);
+}
+
+/* Blob decorativo final */
+.poster__blob-finale {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 200px;
+  background: var(--color-white);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  opacity: 0.1;
+  pointer-events: none;
+  animation: blobPulse 3s ease-in-out infinite;
+}
+
+@keyframes blobPulse {
+  0%, 100% { opacity: 0.1; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.15; transform: translateX(-50%) scale(1.05); }
+}
+
+.poster__header {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.poster__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 0.95;
+  color: var(--color-white);
+  font-weight: 800;
+}
+
+.poster__tagline {
+  margin: 1.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.poster__tagline-text {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  line-height: 1.3;
+  color: var(--color-white);
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+/* Botones grandes */
+.poster__cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.poster-btn--large {
+  padding: 1.25rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.poster--finale .poster-btn--bone {
+  background: var(--color-bone);
+  color: var(--color-blue);
+  border-color: var(--color-white);
+}
+
+.poster--finale .poster-btn--bone:hover {
+  background: var(--color-white);
+  color: var(--color-blue);
+}
+
+.poster--finale .poster-btn--green {
+  background: var(--color-green);
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.poster--finale .poster-btn--green:hover {
+  background: var(--color-white);
+  color: var(--color-green);
+}
+
+/* Footer */
+.poster__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.poster__social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.poster__social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.poster__social-links .link-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+}
+
+.poster__restart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-blue);
+  background: var(--color-white);
+  border: var(--border-width) solid var(--color-white);
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  transition: all var(--transition-fast);
+}
+
+.poster__restart-btn:hover {
+  background: var(--color-bone);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-hover);
+}
+
+.poster__restart-btn:focus-visible {
+  outline: 3px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+.poster__restart-btn svg {
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.poster__restart-btn:hover svg {
+  transform: rotate(-20deg);
+}
+
+.poster__footer-text {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .poster--finale {
+    padding: 2rem 1.5rem;
+    max-width: 100%;
+  }
+
+  .poster__blob-finale {
+    width: 200px;
+    height: 150px;
+    bottom: -60px;
+  }
+
+  .poster__cta-group {
+    gap: 0.75rem;
+  }
+
+  .poster-btn--large {
+    padding: 1rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .poster__social-links {
+    gap: 1rem;
+  }
+
+  .poster__restart-btn {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .poster--finale {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .poster__blob-finale {
+    display: none;
+  }
+}

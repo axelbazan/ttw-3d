@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { registration, socialLinks, colors, formatCountdown } from '../../content/event';
+import { registration, socialLinks } from '../../content/event';
+import { formatCountdown } from '../../utils/math';
 import './PosterRegistration.css';
 
 interface PosterRegistrationProps {
@@ -10,7 +11,7 @@ export function PosterRegistration({ className = '' }: PosterRegistrationProps) 
   const [countdown, setCountdown] = useState(() => formatCountdown(
     new Date(registration.opensAt).getTime() - Date.now()
   ));
-  const [isOpen, setIsOpen] = useState(registration.isOpen);
+  const [isOpen, setIsOpen] = useState<boolean>(registration.isOpen);
 
   useEffect(() => {
     // Verificar estado inicial

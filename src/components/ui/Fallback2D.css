@@ -1,0 +1,295 @@
+/* ========================================
+   FALLBACK 2D - Estilos
+   Versión accesible apilada verticalmente
+   ======================================== */
+
+.fallback {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem; /* Espacio para nav fija */
+  background: var(--color-bone);
+}
+
+.fallback__section {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  padding: 2.5rem;
+  background: var(--color-white);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: var(--shadow-hard);
+  border-radius: 8px;
+  scroll-margin-top: 100px; /* Para scroll spy con nav fija */
+}
+
+.fallback__section:target {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 4px;
+}
+
+/* Hero section */
+.fallback__section--hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-blue) 0%, #4f46e5 100%);
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.fallback__hero-content {
+  max-width: 700px;
+}
+
+.fallback__hero-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fallback__section--hero .poster {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  max-width: 100%;
+}
+
+.fallback__section--hero .poster__header,
+.fallback__section--hero .poster__tagline,
+.fallback__section--hero .poster__venues,
+.fallback__section--hero .poster__footer {
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: calc(var(--delay, 0) * 150ms);
+}
+
+.fallback__section--hero .poster-divider {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.fallback__section--hero .eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.fallback__section--hero .body-text,
+.fallback__section--hero .body-text-small {
+  color: var(--color-white);
+}
+
+.fallback__section--hero .poster__venue {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.fallback__section--hero .poster__venue .eyebrow {
+  color: var(--color-white);
+}
+
+.fallback__section--hero .poster__cta {
+  background: var(--color-white);
+  color: var(--color-blue);
+  box-shadow: var(--shadow-hard);
+}
+
+.fallback__section--hero .poster__cta:hover {
+  background: var(--color-bone);
+}
+
+.fallback__section--hero .poster__social-links .link-text {
+  color: var(--color-white);
+}
+
+.fallback__section--hero .poster__social-links .link-text:hover {
+  color: var(--color-bone);
+}
+
+.fallback__section--hero .marquee__item {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Registration section (blue background) */
+.fallback__section--registration {
+  background: var(--color-blue);
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.fallback__section--registration .poster--registration {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  max-width: 100%;
+}
+
+.fallback__section--registration .eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.fallback__section--registration .display-font,
+.fallback__section--registration .body-text,
+.fallback__section--registration .body-text-small {
+  color: var(--color-white);
+}
+
+.fallback__section--registration .poster-divider {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.fallback__section--registration .poster-btn--bone {
+  background: var(--color-white);
+  color: var(--color-blue);
+  border-color: var(--color-white);
+}
+
+.fallback__section--registration .poster-btn--bone:hover {
+  background: var(--color-bone);
+}
+
+.fallback__section--registration .poster-btn--green {
+  background: var(--color-green);
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.fallback__section--registration .poster-btn--green:hover {
+  background: var(--color-white);
+  color: var(--color-green);
+}
+
+.fallback__section--registration .countdown__item {
+  background: transparent;
+  border-color: var(--color-white);
+  box-shadow: none;
+}
+
+.fallback__section--registration .countdown__value,
+.fallback__section--registration .countdown__label {
+  color: var(--color-white);
+}
+
+.fallback__section--registration .poster__social-links .link-text {
+  color: var(--color-white);
+}
+
+/* Finale section */
+.fallback__section--finale {
+  background: var(--color-blue);
+  color: var(--color-white);
+  border-color: transparent;
+  box-shadow: none;
+  text-align: center;
+}
+
+.fallback__section--finale .poster--finale {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  max-width: 100%;
+}
+
+.fallback__section--finale .eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.fallback__section--finale .display-font,
+.fallback__section--finale .body-text,
+.fallback__section--finale .body-text-small {
+  color: var(--color-white);
+}
+
+.fallback__section--finale .poster-divider {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.fallback__section--finale .poster-btn--bone {
+  background: var(--color-white);
+  color: var(--color-blue);
+  border-color: var(--color-white);
+}
+
+.fallback__section--finale .poster-btn--bone:hover {
+  background: var(--color-bone);
+}
+
+.fallback__section--finale .poster-btn--green {
+  background: var(--color-green);
+  color: var(--color-white);
+  border-color: var(--color-white);
+}
+
+.fallback__section--finale .poster-btn--green:hover {
+  background: var(--color-white);
+  color: var(--color-green);
+}
+
+.fallback__section--finale .poster__social-links .link-text {
+  color: var(--color-white);
+}
+
+.fallback__section--finale .poster__restart-btn {
+  background: var(--color-white);
+  color: var(--color-blue);
+  border-color: var(--color-white);
+}
+
+.fallback__section--finale .poster__restart-btn:hover {
+  background: var(--color-bone);
+}
+
+/* Footer */
+.fallback__footer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-ink-secondary);
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .fallback {
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .fallback__section {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .fallback {
+    padding: 4rem 1rem 2rem;
+  }
+
+  .fallback__section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+  }
+
+  .fallback__section--hero {
+    min-height: 60vh;
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fallback__section {
+    padding: 1.25rem;
+  }
+
+  .fallback__hero-title {
+    font-size: 2rem;
+  }
+}

@@ -1,8 +1,7 @@
 'use client';
 
 import { useMemo } from 'react';
-import { Mesh, SphereGeometry, MeshBasicMaterial, PlaneGeometry, Color } from 'three';
-import { primitive } from '@react-three/fiber';
+import { Mesh, SphereGeometry, MeshBasicMaterial, PlaneGeometry, Color, BoxGeometry, ConeGeometry, Group } from 'three';
 
 interface EnvironmentProps {
   onLoad?: () => void;
@@ -10,13 +9,13 @@ interface EnvironmentProps {
 
 function SkyGradient() {
   return (
-    <Mesh>
-      <SphereGeometry args={[500, 32, 16]} />
-      <MeshBasicMaterial
-        side={1} // BackSide
+    <mesh>
+      <sphereGeometry args={[500, 32, 16]} />
+      <meshBasicMaterial
+        side={1}
         transparent
         opacity={1}
-        onBeforeCompile={(shader) => {
+        onBeforeCompile={(shader: any) => {
           shader.uniforms.uTopColor = { value: new Color(0x87ceeb) };
           shader.uniforms.uBottomColor = { value: new Color(0xe8f0f8) };
           shader.uniforms.uOffset = { value: 0.5 };
@@ -51,36 +50,29 @@ function SkyGradient() {
           );
         }}
       />
-    </Mesh>
+    </mesh>
   );
 }
 
 function Clouds() {
-  const cloudGeometry = useMemo(() => {
-    const geo = new PlaneGeometry(200, 50);
-    // Crear múltiples nubes como instancias
-    return geo;
-  }, []);
-
   return (
     <group>
-      {/* Nubes dispersas en el horizonte */}
       {[-80, -40, 0, 40, 80].map((x, i) => (
-        <Mesh
+        <mesh
           key={i}
           position={[x, 35 + (i % 3) * 5, -60 - (i % 2) * 20]}
           rotation={[-Math.PI / 2, 0, 0]}
           scale={1.5 + (i % 3) * 0.5}
         >
-          <PlaneGeometry args={[1, 1]} />
-          <MeshBasicMaterial
+          <planeGeometry args={[200, 50]} />
+          <meshBasicMaterial
             color={0xffffff}
             transparent
             opacity={0.15 + (i % 3) * 0.05}
             side={2}
             depthWrite={false}
           />
-        </Mesh>
+        </mesh>
       ))}
     </group>
   );
@@ -90,14 +82,14 @@ function CitySilhouettes() {
   return (
     <group>
       {[-120, -80, -40, 0, 40, 80, 120].map((x, i) => (
-        <Mesh
+        <mesh
           key={i}
           position={[x + (i % 3) * 10, -3.5, -50 - (i % 4) * 5]}
           scale={[2 + (i % 3), 3 + (i % 5), 1]}
         >
-          <BoxGeometry args={[1, 1, 1]} />
-          <MeshBasicMaterial color={0x2a2a2a} transparent opacity={0.4} />
-        </Mesh>
+          <boxGeometry args={[1, 1, 1]} />
+          <meshBasicMaterial color={0x2a2a2a} transparent opacity={0.4} />
+        </mesh>
       ))}
     </group>
   );
@@ -107,15 +99,15 @@ function Mountains() {
   return (
     <group>
       {[-100, -60, -20, 20, 60, 100].map((x, i) => (
-        <Mesh
+        <mesh
           key={i}
           position={[x + (i % 2) * 15, -2, -70 - (i % 3) * 10]}
           rotation={[0, (i % 2) * 0.5, 0]}
           scale={[15 + (i % 3) * 5, 8 + (i % 4) * 3, 10]}
         >
-          <ConeGeometry args={[1, 1, 4]} />
-          <MeshBasicMaterial color={0x3a3a4a} transparent opacity={0.35} />
-        </Mesh>
+          <coneGeometry args={[1, 1, 4]} />
+          <meshBasicMaterial color={0x3a3a4a} transparent opacity={0.35} />
+        </mesh>
       ))}
     </group>
   );
@@ -124,49 +116,45 @@ function Mountains() {
 function ViewpointRailing() {
   return (
     <group position={[0, 0.5, 15]}>
-      {/* Deck de madera */}
-      <Mesh
+      <mesh
         position={[0, -0.1, 0]}
         scale={[8, 0.2, 4]}
       >
-        <BoxGeometry args={[1, 1, 1]} />
-        <MeshStandardMaterial color={0x8b6f4a} roughness={0.8} metalness={0.0} />
-      </Mesh>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color={0x8b6f4a} roughness={0.8} metalness={0.0} />
+      </mesh>
 
-      {/* Baranda metálica */}
-      <Mesh
+      <mesh
         position={[-3.8, 0.6, 0]}
         scale={[0.08, 0.8, 3.8]}
       >
-        <BoxGeometry args={[1, 1, 1]} />
-        <MeshStandardMaterial color={0x666666} roughness={0.3} metalness={0.8} />
-      </Mesh>
-      <Mesh
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color={0x666666} roughness={0.3} metalness={0.8} />
+      </mesh>
+      <mesh
         position={[3.8, 0.6, 0]}
         scale={[0.08, 0.8, 3.8]}
       >
-        <BoxGeometry args={[1, 1, 1]} />
-        <MeshStandardMaterial color={0x666666} roughness={0.3} metalness={0.8} />
-      </Mesh>
-      <Mesh
-        position={[0, 0.95, -1.7}]
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color={0x666666} roughness={0.3} metalness={0.8} />
+      </mesh>
+      <mesh
+        position={[0, 0.95, -1.7]}
         scale={[7.6, 0.06, 0.06]}
       >
-        <BoxGeometry args={[1, 1, 1]} />
-        <MeshStandardMaterial color={0x666666} roughness={0.3} metalness={0.8} />
-      </Mesh>
-      <Mesh
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color={0x666666} roughness={0.3} metalness={0.8} />
+      </mesh>
+      <mesh
         position={[0, 0.55, -1.7]}
         scale={[7.6, 0.06, 0.06]}
       >
-        <BoxGeometry args={[1, 1, 1]} />
-        <MeshStandardMaterial color={0x666666} roughness={0.3} metalness={0.8} />
-      </Mesh>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color={0x666666} roughness={0.3} metalness={0.8} />
+      </mesh>
     </group>
   );
 }
-
-import { group, BoxGeometry, ConeGeometry } from '@react-three/fiber';
 
 export function Environment({ onLoad }: EnvironmentProps) {
   return (

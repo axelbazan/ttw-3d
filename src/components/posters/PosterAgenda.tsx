@@ -12,14 +12,12 @@ export function PosterAgenda({ activeTab, onTabChange, className = '' }: PosterA
 
   return (
     <article className={`poster poster--agenda ${className}`} role="region" aria-label={`Agenda: ${day.title}`}>
-      {/* Intro */}
       <div className="poster__intro">
         <p className="body-text">{agendaIntro}</p>
       </div>
 
       <div className="poster-divider" />
 
-      {/* Tabs */}
       <div className="poster__tabs" role="tablist" aria-label="Días del evento">
         {days.map(d => (
           <button
@@ -30,16 +28,15 @@ export function PosterAgenda({ activeTab, onTabChange, className = '' }: PosterA
             id={`tab-${d.id}`}
             className={`poster__tab ${activeTab === d.id ? 'poster__tab--active' : ''}`}
             onClick={() => onTabChange(d.id)}
-            style={{ '--tab-color': d.tagColor }}
+            style={{ background: activeTab === d.id ? d.tagColor : 'var(--color-chip-bg)' } as React.CSSProperties}
           >
-            <span className="poster__tab-tag" style={{ background: d.tagColor }}>
+            <span className="poster__tab-tag" style={{ background: d.tagColor } as React.CSSProperties}>
               {d.tagText}
             </span>
           </button>
         ))}
       </div>
 
-      {/* Panel activo */}
       <div
         role="tabpanel"
         id={`panel-${activeTab}`}
@@ -47,7 +44,7 @@ export function PosterAgenda({ activeTab, onTabChange, className = '' }: PosterA
         className="poster__panel"
       >
         <div className="poster__day-header">
-          <div className="poster__day-chip" style={{ background: day.tagColor }}>
+          <div className="poster__day-chip" style={{ background: day.tagColor } as React.CSSProperties}>
             <span>{day.date}</span>
             <span className="poster__day-place">{day.place}</span>
           </div>
@@ -83,7 +80,6 @@ export function PosterAgenda({ activeTab, onTabChange, className = '' }: PosterA
         <p className="body-text-small poster__coming-soon">Coming Soon - Cronograma detallado próximamente</p>
       </div>
 
-      {/* Marquee */}
       <div className="poster-divider" />
       <div className="poster__marquee" aria-hidden="true">
         <div className="marquee">
@@ -98,7 +94,6 @@ export function PosterAgenda({ activeTab, onTabChange, className = '' }: PosterA
         </div>
       </div>
 
-      {/* Redes sociales */}
       <div className="poster-divider" />
       <div className="poster__social">
         <span className="eyebrow">Seguinos</span>

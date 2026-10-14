@@ -1,16 +1,10 @@
-import type { Vector3Like, CameraKeyframe, ScrollProgress, ScrollSectionId, ScrollSection } from '../types';
+import type { Vector3Like, CameraKeyframe, ScrollProgress, ScrollSectionId } from '../types';
 import { scrollSections } from '../content/event';
 
-/**
- * Interpolación lineal entre dos números
- */
 export function lerp(a: number, b: number, t: number): number {
   return a + (b - a) * t;
 }
 
-/**
- * Interpolación lineal entre dos vectores 3D
- */
 export function lerpVec3(a: Vector3Like, b: Vector3Like, t: number): Vector3Like {
   return {
     x: lerp(a.x, b.x, t),
@@ -19,9 +13,6 @@ export function lerpVec3(a: Vector3Like, b: Vector3Like, t: number): Vector3Like
   };
 }
 
-/**
- * Suavizado con easing (ease-out cubic)
- */
 export function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3);
 }
@@ -30,9 +21,6 @@ export function easeInOutCubic(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
-/**
- * Calcula el progreso de scroll dentro de una sección específica
- */
 export function getSectionProgress(
   globalT: number,
   sectionStart: number,
@@ -43,9 +31,6 @@ export function getSectionProgress(
   return (globalT - sectionStart) / (sectionEnd - sectionStart);
 }
 
-/**
- * Obtiene la sección actual y su progreso interno dado un progreso global
- */
 export function getCurrentSection(globalT: number): ScrollProgress {
   for (const section of scrollSections) {
     const [start, end] = section.range;
@@ -57,7 +42,6 @@ export function getCurrentSection(globalT: number): ScrollProgress {
       };
     }
   }
-  // Si estamos al final exacto (t=1), estar en la última sección
   const lastSection = scrollSections[scrollSections.length - 1];
   return {
     t: globalT,
@@ -66,9 +50,6 @@ export function getCurrentSection(globalT: number): ScrollProgress {
   };
 }
 
-/**
- * Convierte coordenadas de pantalla a normalizadas (-1 a 1)
- */
 export function screenToNDC(x: number, y: number, width: number, height: number): Vector3Like {
   return {
     x: (x / width) * 2 - 1,
@@ -77,16 +58,10 @@ export function screenToNDC(x: number, y: number, width: number, height: number)
   };
 }
 
-/**
- * Clampa un valor entre min y max
- */
 export function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
 
-/**
- * Mapea un valor de un rango a otro
- */
 export function mapRange(
   value: number,
   inMin: number,
@@ -97,58 +72,16 @@ export function mapRange(
   return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin);
 }
 
-/**
- * Genera una curva Catmull-Rom para el camino de la cámara
- * Puntos clave basados en el brief
- */
 export const CAMERA_PATH_KEYFRAMES: CameraKeyframe[] = [
-  // 0 - Home: lejos, vista completa con ciudad/sierras
-  {
-    position: { x: 0, y: 8, z: 20 },
-    lookAt: { x: 0, y: 2, z: 0 },
-    fov: 50,
-  },
-  // 0.1 - Acercamiento: a ~6-8m, aparece primer póster
-  {
-    position: { x: 4, y: 5, z: 10 },
-    lookAt: { x: 0, y: 2, z: 0 },
-    fov: 45,
-  },
-  // 0.25 - Agenda: órbita lateral izquierda
-  {
-    position: { x: -8, y: 4, z: 3 },
-    lookAt: { x: 0, y: 2, z: 0 },
-    fov: 40,
-  },
-  // 0.45 - Speakers: cara trasera/lateral
-  {
-    position: { x: -2, y: 5, z: -8 },
-    lookAt: { x: 0, y: 2, z: 0 },
-    fov: 40,
-  },
-  // 0.65 - Colaboradores: subida, múltiples pósters
-  {
-    position: { x: 3, y: 8, z: -5 },
-    lookAt: { x: 0, y: 3, z: 0 },
-    fov: 45,
-  },
-  // 0.82 - Inscripción: vuelta al frente, plano cerrado
-  {
-    position: { x: 0, y: 3, z: 6 },
-    lookAt: { x: 0, y: 1.5, z: 0 },
-    fov: 35,
-  },
-  // 0.95 - Final: cámara sigue la caída
-  {
-    position: { x: 0, y: 2, z: 5 },
-    lookAt: { x: 0, y: 0, z: -5 },
-    fov: 50,
-  },
+  { position: { x: 0, y: 8, z: 20 }, lookAt: { x: 0, y: 2, z: 0 }, fov: 50 },
+  { position: { x: 4, y: 5, z: 10 }, lookAt: { x: 0, y: 2, z: 0 }, fov: 45 },
+  { position: { x: -8, y: 4, z: 3 }, lookAt: { x: 0, y: 2, z: 0 }, fov: 40 },
+  { position: { x: -2, y: 5, z: -8 }, lookAt: { x: 0, y: 2, z: 0 }, fov: 40 },
+  { position: { x: 3, y: 8, z: -5 }, lookAt: { x: 0, y: 3, z: 0 }, fov: 45 },
+  { position: { x: 0, y: 3, z: 6 }, lookAt: { x: 0, y: 1.5, z: 0 }, fov: 35 },
+  { position: { x: 0, y: 2, z: 5 }, lookAt: { x: 0, y: 0, z: -5 }, fov: 50 },
 ];
 
-/**
- * Interpola la cámara a lo largo del camino usando Catmull-Rom spline
- */
 export function getCameraStateAtProgress(t: number): { position: Vector3Like; lookAt: Vector3Like; fov: number } {
   const clampedT = clamp(t, 0, 1);
   const numSegments = CAMERA_PATH_KEYFRAMES.length - 1;
@@ -166,7 +99,6 @@ export function getCameraStateAtProgress(t: number): { position: Vector3Like; lo
   const p2 = CAMERA_PATH_KEYFRAMES[segmentIndex + 1];
   const p3 = CAMERA_PATH_KEYFRAMES[Math.min(CAMERA_PATH_KEYFRAMES.length - 1, segmentIndex + 2)];
 
-  // Catmull-Rom spline interpolation
   const t2 = localT * localT;
   const t3 = t2 * localT;
 
@@ -183,17 +115,11 @@ export function getCameraStateAtProgress(t: number): { position: Vector3Like; lo
   return { position, lookAt, fov };
 }
 
-/**
- * Verifica si el usuario prefiere movimiento reducido
- */
 export function getPrefersReducedMotion(): boolean {
   if (typeof window === 'undefined') return false;
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-/**
- * Verifica soporte WebGL
- */
 export function isWebGLSupported(): boolean {
   if (typeof window === 'undefined') return false;
   try {
@@ -204,9 +130,6 @@ export function isWebGLSupported(): boolean {
   }
 }
 
-/**
- * Formatea tiempo para countdown
- */
 export function formatCountdown(ms: number): { days: number; hours: number; minutes: number; seconds: number } {
   if (ms <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
   const days = Math.floor(ms / (1000 * 60 * 60 * 24));
@@ -216,9 +139,10 @@ export function formatCountdown(ms: number): { days: number; hours: number; minu
   return { days, hours, minutes, seconds };
 }
 
-/**
- * Genera ID único simple
- */
 export function generateId(): string {
   return Math.random().toString(36).substring(2, 9);
 }
+
+// Re-export types for convenience
+export type { ScrollSectionId } from '../types';
+export type { Vector3Like, CameraKeyframe, ScrollProgress };

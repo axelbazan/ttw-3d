@@ -1,4 +1,4 @@
-import { event, tagsMarquee, socialLinks, colors } from '../../content/event';
+import { event, tagsMarquee, socialLinks } from '../../content/event';
 import './PosterPresentation.css';
 
 interface PosterPresentationProps {
